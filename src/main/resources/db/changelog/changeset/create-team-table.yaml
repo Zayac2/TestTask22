@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-team
+      author: Ignat Zayac
+      changes:
+        - createTable:
+            tableName: table
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: team_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: sport_type
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: date_found
+                  type: date
+                  constraints:
+                    nullable: false

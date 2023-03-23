@@ -1,26 +1,35 @@
 package com.example.testtask.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Teammate {
-    private int id;
-    private int id_team;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @ManyToOne
+    private Team team_id;
+    @Column(nullable = false)
     private String surname;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String patronymic;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public int getId_team() {
-        return id_team;
+    public Team getTeam_id() {
+        return team_id;
     }
 
-    public void setId_team(int id_team) {
-        this.id_team = id_team;
+    public void setTeam_id(Team id_team) {
+        this.team_id = id_team;
     }
 
     public String getSurname() {

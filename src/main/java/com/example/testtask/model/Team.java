@@ -1,18 +1,28 @@
 package com.example.testtask.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "team-table")
 public class Team {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(nullable = false)
     private String team_name;
+    @Column(nullable = false)
     private String sport_type;
+    @Column(nullable = false)
     private Date date_found;
 
-    public int getId() {
+    public Team() {}
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
