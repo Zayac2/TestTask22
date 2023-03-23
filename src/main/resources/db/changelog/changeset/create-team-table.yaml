@@ -4,7 +4,7 @@ databaseChangeLog:
       author: Ignat Zayac
       changes:
         - createTable:
-            tableName: table
+            tableName: team
             columns:
               - column:
                   name: id

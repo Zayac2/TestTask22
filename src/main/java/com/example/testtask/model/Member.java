@@ -1,9 +1,9 @@
 package com.example.testtask.model;
 
 import javax.persistence.*;
-
 @Entity
-public class Teammate {
+@Table(name = "member")
+public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,6 +15,8 @@ public class Teammate {
     private String name;
     @Column(nullable = false)
     private String patronymic;
+
+    public Member() {}
 
     public Long getId() {
         return id;

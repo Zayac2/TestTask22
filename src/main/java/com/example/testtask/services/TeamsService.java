@@ -4,10 +4,10 @@ import com.example.testtask.repositories.TeamRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TeamService {
+public class TeamsService {
     private final TeamRepository teamRepository;
 
-    public TeamService(TeamRepository teamRepository) {
+    public TeamsService(TeamRepository teamRepository) {
         this.teamRepository = teamRepository;
     }
 

@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: create-teammate
+      id: create-member
       author: Ignat Zayac
       changes:
         - createTable:
-            tableName: teammate
+            tableName: member
             columns:
               - column:
                   name: id
@@ -17,7 +17,7 @@ databaseChangeLog:
                   name: team_id
                   type: bigint
                   constraints:
-                    foreignKeyName: team_teammate_fk
+                    foreignKeyName: team_member_fk
                     referencedTableName: team
                     referencedColumnNames: id
               - column:
