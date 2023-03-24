@@ -20,6 +20,7 @@ public class Member {
     @Column(nullable = false)
     private String role;
     @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date birthday;
 
     public Member() {}

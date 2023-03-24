@@ -6,12 +6,9 @@ import com.example.testtask.model.Member;
 import com.example.testtask.model.Team;
 import com.example.testtask.repositories.MemberRepository;
 import com.example.testtask.repositories.TeamRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
 
@@ -26,15 +23,15 @@ public class TeamsService {
         this.memberRepository = memberRepository;
     }
 
-    public List<Team> getAllTeams() {
+    public List<Team> findAllTeams() {
         return teamRepository.findAll();
     }
 
-    public List<Team> findBySportType(String sport_type) {
+    public List<Team> findTeamsBySport(String sport_type) {
         return teamRepository.findBySportType(sport_type);
     }
 
-    public List<Team> getTeamsForPeriod(Date date1, Date date2) {
+    public List<Team> findTeamsForPeriod(Date date1, Date date2) {
         return teamRepository.getForPeriod(date1, date2);
     }
 
@@ -46,7 +43,7 @@ public class TeamsService {
         return memberRepository.findAllByRoleInTeam(team_id, role);
     }
 
-    public void createTeam(TeamRequest dto) {
+    public void addTeam(TeamRequest dto) {
         Team team = new Team();
         team.setTeam_name(dto.getTeam_name());
         team.setSport_type(dto.getSport_type());
@@ -55,7 +52,7 @@ public class TeamsService {
         teamRepository.save(team);
     }
 
-    public void createMember(MemberRequest dto) {
+    public void addMember(MemberRequest dto) {
         Member member = new Member();
         member.setTeam_id(dto.getTeam_id());
         member.setName(dto.getName());

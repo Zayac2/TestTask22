@@ -1,5 +1,7 @@
 package com.example.testtask.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -14,6 +16,7 @@ public class Team {
     @Column(nullable = false)
     private String sport_type;
     @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date date_found;
 
     public Team() {}
