@@ -8,8 +8,8 @@ import java.util.Date;
 
 public class MemberRequest {
     private Long team_id;
-    private String surname;
     private String name;
+    private String surname;
     private String patronymic;
     private String role;
     private Date birthday;

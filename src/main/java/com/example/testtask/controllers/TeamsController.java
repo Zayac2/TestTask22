@@ -57,18 +57,18 @@ public class TeamsController {
         teamsService.addMember(dto);
     }
 
-    @PostMapping("/members/transfer")
+    @PutMapping("/members/transfer")
     public void transferMember(@RequestBody Long id, @RequestBody Long team_id) {
         teamsService.transferMember(id, team_id);
     }
 
-    @PutMapping("/member/update")
-    public void updateMember(@RequestBody Long id, @RequestBody(required = false) MemberRequest dto) {
+    @PutMapping("/members/update")
+    public void updateMember(@RequestBody Long id, @RequestBody MemberRequest dto) {
         teamsService.updateMember(id, dto);
     }
 
     @PutMapping("/teams/update")
-    public void updateTeam(@RequestBody Long id, @RequestBody(required = false) TeamRequest dto) {
+    public void updateTeam(@RequestBody Long id, @RequestBody TeamRequest dto) {
         teamsService.updateTeam(id, dto);
     }
 
