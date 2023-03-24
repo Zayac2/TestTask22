@@ -1,43 +1,25 @@
-package com.example.testtask.model;
+package com.example.testtask.dto;
 
-import javax.persistence.*;
+import com.example.testtask.model.Team;
+
+import javax.persistence.Column;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
-@Entity
-@Table(name = "member")
-public class Member {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @ManyToOne
+public class MemberRequest {
     private Team team_id;
-    @Column(nullable = false)
     private String surname;
-    @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
     private String patronymic;
-    @Column(nullable = false)
     private String role;
-    @Column(nullable = false)
     private Date birthday;
-
-    public Member() {}
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Team getTeam_id() {
         return team_id;
     }
 
-    public void setTeam_id(Team id_team) {
-        this.team_id = id_team;
+    public void setTeam_id(Team team_id) {
+        this.team_id = team_id;
     }
 
     public String getSurname() {
