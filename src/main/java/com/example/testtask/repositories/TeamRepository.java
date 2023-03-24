@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 import java.util.List;
 
-@Repository
 public interface TeamRepository extends JpaRepository<Team, Long> {
     @Query(value = "SELECT * FROM team WHERE sport_type = :sport_type", nativeQuery = true)
     List<Team> findBySportType(String sport_type);

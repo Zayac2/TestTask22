@@ -20,6 +20,7 @@ databaseChangeLog:
                     foreignKeyName: team_member_fk
                     referencedTableName: team
                     referencedColumnNames: id
+                    nullable: false
               - column:
                   name: surname
                   type: varchar(50)
@@ -35,12 +36,12 @@ databaseChangeLog:
                   type: varchar(50)
                   constraints:
                     nullable: false
-              -column:
+              - column:
                   name: role
                   type: varchar(50)
                   constraints:
                     nullable: false
-              -column:
+              - column:
                   name: birthday
                   type: date
                   constraints:

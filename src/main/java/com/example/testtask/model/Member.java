@@ -10,6 +10,7 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
+    @JoinColumn(name = "team_id", nullable = false)
     private Team team_id;
     @Column(nullable = false)
     private String surname;

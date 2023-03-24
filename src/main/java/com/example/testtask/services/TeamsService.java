@@ -45,16 +45,29 @@ public class TeamsService {
 
     public void addTeam(TeamRequest dto) {
         Team team = new Team();
-        team.setTeam_name(dto.getTeam_name());
-        team.setSport_type(dto.getSport_type());
-        team.setDate_found(dto.getDate_found());
-
-        teamRepository.save(team);
+        saveTeam(dto, team);
     }
 
     public void addMember(MemberRequest dto) {
         Member member = new Member();
-        member.setTeam_id(dto.getTeam_id());
+        saveMember(dto, member);
+    }
+
+    public void transferMember(Long id, Long team_id) {
+        memberRepository.transfer(id, team_id);
+    }
+
+    public void updateMember(Long id, MemberRequest dto) {
+        Member updatedMember = memberRepository.findById(id).get();
+        saveMember(dto, updatedMember);
+    }
+
+    public void updateTeam(Long id, TeamRequest dto) {
+        Team updatedTeam = teamRepository.findById(id).get();
+        saveTeam(dto, updatedTeam);
+    }
+    public void saveMember(MemberRequest dto, Member member) {
+        member.setTeam_id(teamRepository.getReferenceById(dto.getTeam_id()));
         member.setName(dto.getName());
         member.setSurname(dto.getSurname());
         member.setPatronymic(dto.getPatronymic());
@@ -64,28 +77,19 @@ public class TeamsService {
         memberRepository.save(member);
     }
 
-    public void transferMember(Long id, Long team_id) {
-        memberRepository.transfer(id, team_id);
+    public void saveTeam(TeamRequest dto, Team team) {
+        team.setTeam_name(dto.getTeam_name());
+        team.setSport_type(dto.getSport_type());
+        team.setDate_found(dto.getDate_found());
+
+        teamRepository.save(team);
     }
 
-    public void updateMember(Long id, MemberRequest dto) {
-        Member updatedMember = memberRepository.findById(id).get();
-        if(dto.getTeam_id() != null) updatedMember.setTeam_id(dto.getTeam_id());
-        if(dto.getName() != null) updatedMember.setName(dto.getName());
-        if(dto.getSurname() != null) updatedMember.setSurname(dto.getSurname());
-        if(dto.getPatronymic() != null) updatedMember.setPatronymic(dto.getPatronymic());
-        if(dto.getRole() != null) updatedMember.setRole(dto.getRole());
-        if(dto.getBirthday() != null) updatedMember.setBirthday(dto.getBirthday());
-
-        memberRepository.save(updatedMember);
+    public void deleteMember(Long id) {
+        memberRepository.deleteById(id);
     }
 
-    public void updateTeam(Long id, TeamRequest dto) {
-        Team updatedTeam = teamRepository.findById(id).get();
-        if(dto.getTeam_name() != null) updatedTeam.setTeam_name(dto.getTeam_name());
-        if(dto.getSport_type() != null) updatedTeam.setSport_type(dto.getSport_type());
-        if(dto.getDate_found() != null) updatedTeam.setDate_found(dto.getDate_found());
-
-        teamRepository.save(updatedTeam);
+    public void deleteTeam(Long id) {
+        teamRepository.deleteById(id);
     }
 }
