@@ -31,6 +31,6 @@ databaseChangeLog:
               - column:
                   name: total_members
                   type: bigint
-                  defaultValue: 0
                   constraints:
                     nullable: false
+                    defaultValue: 0

@@ -61,13 +61,13 @@ public class TeamsController {
     }
 
     @GetMapping("/members/team")
-    public List<Member> membersByTeamId(@RequestBody Long team_id) {
-        return teamsService.findMembersByTeamId(team_id);
+    public List<Member> membersByTeamId(@RequestBody Long teamId) {
+        return teamsService.findMembersByTeamId(teamId);
     }
 
     @GetMapping("/members/role")
-    public List<Member> membersByRoleInTeam(@RequestBody Long team_id, @RequestBody String role) {
-        return teamsService.findMembersByRoleInTeam(team_id, role);
+    public List<Member> membersByRoleInTeam(@RequestBody Long teamId, @RequestBody String role) {
+        return teamsService.findMembersByRoleInTeam(teamId, role);
     }
 
     @PostMapping("/teams/new")
