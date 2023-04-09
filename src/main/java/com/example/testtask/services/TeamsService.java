@@ -27,20 +27,44 @@ public class TeamsService {
         return teamRepository.findAll();
     }
 
-    public List<Team> findTeamsBySport(String sport_type) {
-        return teamRepository.findBySportType(sport_type);
+    public List<Team> findTeamsBySport(String sportType) {
+        return teamRepository.findBySportType(sportType);
     }
 
     public List<Team> findTeamsForPeriod(Date date1, Date date2) {
         return teamRepository.getForPeriod(date1, date2);
     }
 
-    public List<Member> findMembersByTeamId(Long team_id) {
-        return memberRepository.findAllByTeamId(team_id);
+    public Long countTeams() {
+        return teamRepository.countAllTeams();
     }
 
-    public List<Member> findMembersByRoleInTeam(Long team_id, String role) {
-        return memberRepository.findAllByRoleInTeam(team_id, role);
+    public Long sumAllMembersAmongTeams() {
+        return teamRepository.sumMembers();
+    }
+
+    public Long minMembersAmongTeams() {
+        return teamRepository.minMembers();
+    }
+
+    public Long maxMembersAmongTeams() {
+        return teamRepository.maxMembers();
+    }
+
+    public Long avgMembersAmongTeams() {
+        return teamRepository.avgMembers();
+    }
+
+    public List<Member> findMembersByTeamId(Long teamId) {
+        return memberRepository.findAllByTeamId(teamId);
+    }
+
+    public List<Member> findMembersByRoleInTeam(Long teamId, String role) {
+        return memberRepository.findAllByRoleInTeam(teamId, role);
+    }
+
+    public Long countMembers() {
+        return memberRepository.countAllMembers();
     }
 
     public void addTeam(TeamRequest dto) {
@@ -53,8 +77,8 @@ public class TeamsService {
         saveMember(dto, member);
     }
 
-    public void transferMember(Long id, Long team_id) {
-        memberRepository.transfer(id, team_id);
+    public void transferMember(Long id, Long teamId) {
+        memberRepository.transfer(id, teamId);
     }
 
     public void updateMember(Long id, MemberRequest dto) {
@@ -67,7 +91,7 @@ public class TeamsService {
         saveTeam(dto, updatedTeam);
     }
     public void saveMember(MemberRequest dto, Member member) {
-        member.setTeam_id(teamRepository.getReferenceById(dto.getTeam_id()));
+        member.setTeamId(teamRepository.getReferenceById(dto.getTeamId()));
         member.setName(dto.getName());
         member.setSurname(dto.getSurname());
         member.setPatronymic(dto.getPatronymic());
@@ -75,18 +99,21 @@ public class TeamsService {
         member.setBirthday(dto.getBirthday());
 
         memberRepository.save(member);
+        teamRepository.incrementMember(dto.getTeamId());
     }
 
     public void saveTeam(TeamRequest dto, Team team) {
-        team.setTeam_name(dto.getTeam_name());
-        team.setSport_type(dto.getSport_type());
-        team.setDate_found(dto.getDate_found());
+        team.setTeamName(dto.getTeamName());
+        team.setSportType(dto.getSportType());
+        team.setDateFound(dto.getDateFound());
 
         teamRepository.save(team);
     }
 
     public void deleteMember(Long id) {
         memberRepository.deleteById(id);
+        Long teamId = memberRepository.findById(id).get().getTeamId().getId();
+        teamRepository.decrementMember(teamId);
     }
 
     public void deleteTeam(Long id) {

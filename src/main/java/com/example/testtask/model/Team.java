@@ -1,23 +1,28 @@
 package com.example.testtask.model;
 
-import org.hibernate.annotations.CreationTimestamp;
-
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "team")
 public class Team {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private String team_name;
-    @Column(nullable = false)
-    private String sport_type;
-    @Column(nullable = false)
+
+    @Column(name = "team_name", nullable = false)
+    private String teamName;
+
+    @Column(name = "sport_type", nullable = false)
+    private String sportType;
+
+    @Column(name = "date_found", nullable = false)
     @Temporal(TemporalType.DATE)
-    private Date date_found;
+    private Date dateFound;
+
+    @Column(name = "total_members", nullable = false, columnDefinition = "bigint default 0")
+    private Long totalMembers;
 
     public Team() {}
 
@@ -29,27 +34,35 @@ public class Team {
         this.id = id;
     }
 
-    public String getTeam_name() {
-        return team_name;
+    public String getTeamName() {
+        return teamName;
     }
 
-    public void setTeam_name(String team_name) {
-        this.team_name = team_name;
+    public void setTeamName(String team_name) {
+        this.teamName = team_name;
     }
 
-    public String getSport_type() {
-        return sport_type;
+    public String getSportType() {
+        return sportType;
     }
 
-    public void setSport_type(String sport_type) {
-        this.sport_type = sport_type;
+    public void setSportType(String sport_type) {
+        this.sportType = sport_type;
     }
 
-    public Date getDate_found() {
-        return date_found;
+    public Date getDateFound() {
+        return dateFound;
     }
 
-    public void setDate_found(Date date_found) {
-        this.date_found = date_found;
+    public void setDateFound(Date date_found) {
+        this.dateFound = date_found;
+    }
+
+    public Long getTotalMembers() {
+        return totalMembers;
+    }
+
+    public void setTotalMembers(Long totalMembers) {
+        this.totalMembers = totalMembers;
     }
 }

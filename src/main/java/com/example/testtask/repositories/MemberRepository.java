@@ -9,13 +9,17 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
-    @Query(value = "SELECT * FROM member WHERE team_id = :team_id", nativeQuery = true)
-    List<Member> findAllByTeamId(Long team_id);
 
-    @Query(value = "SELECT * FROM member WHERE team_id = :team_id AND role = :role", nativeQuery = true)
-    List<Member> findAllByRoleInTeam(Long team_id, String role);
+    @Query(value = "SELECT * FROM member WHERE team_id = :teamId", nativeQuery = true)
+    List<Member> findAllByTeamId(Long teamId);
+
+    @Query(value = "SELECT * FROM member WHERE team_id = :teamId AND role = :role", nativeQuery = true)
+    List<Member> findAllByRoleInTeam(Long teamId, String role);
 
     @Modifying
-    @Query(value = "UPDATE member SET team_id = :team_id WHERE id = :id", nativeQuery = true)
-    void transfer(Long id, Long team_id);
+    @Query(value = "UPDATE member SET team_id = :teamId WHERE id = :id", nativeQuery = true)
+    void transfer(Long id, Long teamId);
+
+    @Query(value = "SELECT COUNT(*) FROM member", nativeQuery = true)
+    Long countAllMembers();
 }

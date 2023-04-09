@@ -27,14 +27,37 @@ public class TeamsController {
     }
 
     @GetMapping("/teams/sport")
-    public List<Team> teamsBySport(@RequestBody String sport_type) {
-        return teamsService.findTeamsBySport(sport_type);
+    public List<Team> teamsBySport(@RequestBody String sportType) {
+        return teamsService.findTeamsBySport(sportType);
     }
 
     @GetMapping("/teams/period")
     public List<Team> teamsForPeriod(@RequestBody @DateTimeFormat(pattern = "yyyy-MM-dd") Date date1,
                                      @RequestBody @DateTimeFormat(pattern = "yyyy-MM-dd") Date date2) {
         return teamsService.findTeamsForPeriod(date1, date2);
+    }
+
+    @GetMapping("/teams/{fun}")
+    public Long teamsFunction(@PathVariable(name = "fun") String function) {
+        switch (function) {
+            case "count":
+                return teamsService.countTeams();
+
+            case "sum":
+                return teamsService.sumAllMembersAmongTeams();
+
+            case "min":
+                return teamsService.minMembersAmongTeams();
+
+            case "max":
+                return teamsService.maxMembersAmongTeams();
+
+            case "avg":
+                return teamsService.avgMembersAmongTeams();
+
+            default:
+                return -1L;
+        }
     }
 
     @GetMapping("/members/team")
@@ -58,8 +81,8 @@ public class TeamsController {
     }
 
     @PutMapping("/members/transfer")
-    public void transferMember(@RequestBody Long id, @RequestBody Long team_id) {
-        teamsService.transferMember(id, team_id);
+    public void transferMember(@RequestBody Long id, @RequestBody Long teamId) {
+        teamsService.transferMember(id, teamId);
     }
 
     @PutMapping("/members/update")

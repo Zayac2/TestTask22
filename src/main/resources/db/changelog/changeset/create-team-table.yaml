@@ -28,3 +28,9 @@ databaseChangeLog:
                   type: date
                   constraints:
                     nullable: false
+              - column:
+                  name: total_members
+                  type: bigint
+                  defaultValue: 0
+                  constraints:
+                    nullable: false
