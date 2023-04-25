@@ -11,6 +11,10 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "competition_id")
+    private Competition competitionId;
+
     @Column(name = "team_name", nullable = false)
     private String teamName;
 
@@ -20,6 +24,9 @@ public class Team {
     @Column(name = "date_found", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date dateFound;
+
+    @Column(nullable = false)
+    private String address;
 
     @Column(name = "total_members", nullable = false, columnDefinition = "bigint default 0")
     private Long totalMembers;
@@ -32,6 +39,14 @@ public class Team {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Competition getCompetitionId() {
+        return competitionId;
+    }
+
+    public void setCompetitionId(Competition competitionId) {
+        this.competitionId = competitionId;
     }
 
     public String getTeamName() {
@@ -56,6 +71,14 @@ public class Team {
 
     public void setDateFound(Date date_found) {
         this.dateFound = date_found;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Long getTotalMembers() {

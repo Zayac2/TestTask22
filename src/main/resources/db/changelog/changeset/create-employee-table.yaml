@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: create-team
+      id: create-employee
       author: Ignat Zayac
       changes:
         - createTable:
-            tableName: team
+            tableName: employee
             columns:
               - column:
                   name: id
@@ -14,35 +14,44 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: competition_id
+                  name: team_id
                   type: bigint
                   constraints:
-                    foreignKeyName: competition_team_fk
-                    referencedTableName: competition
+                    foreignKeyName: team_employee
+                    referencedTableName: team
                     referencedColumnNames: id
               - column:
-                  name: team_name
+                  name: name
                   type: varchar(50)
                   constraints:
                     nullable: false
               - column:
-                  name: sport_type
+                  name: surname
                   type: varchar(50)
                   constraints:
                     nullable: false
               - column:
-                  name: date_found
+                  name: patronymic
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: position
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: salary
+                  type: double
+                  constraints:
+                    nullable: false
+              - column:
+                  name: birthday
                   type: date
                   constraints:
                     nullable: false
               - column:
-                  name: address
-                  type: varchar(50)
+                  name: start_date
+                  type: date
                   constraints:
                     nullable: false
-              - column:
-                  name: total_members
-                  type: bigint
-                  constraints:
-                    nullable: false
-                    defaultValue: 0

@@ -1,13 +1,11 @@
 package com.example.testtask.model;
 
-import com.example.testtask.enums.AgeCategory;
-
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "member")
-public class Member {
+@Table(name = "employee")
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,25 +16,29 @@ public class Member {
     private Team teamId;
 
     @Column(nullable = false)
-    private String surname;
+    private String name;
 
     @Column(nullable = false)
-    private String name;
+    private String surname;
 
     @Column(nullable = false)
     private String patronymic;
 
     @Column(nullable = false)
-    private String role;
+    private String position;
+
+    @Column(nullable = false)
+    private Double salary;
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date birthday;
 
-    @Column(nullable = false)
-    private AgeCategory ageCategory;
+    @Column(name = "start_date", nullable = false)
+    @Temporal(value = TemporalType.DATE)
+    private Date startDate;
 
-    public Member() {}
+    public Employee() {}
 
     public Long getId() {
         return id;
@@ -54,20 +56,20 @@ public class Member {
         this.teamId = teamId;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getPatronymic() {
@@ -78,12 +80,20 @@ public class Member {
         this.patronymic = patronymic;
     }
 
-    public String getRole() {
-        return role;
+    public String getPosition() {
+        return position;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
     }
 
     public Date getBirthday() {
@@ -94,11 +104,11 @@ public class Member {
         this.birthday = birthday;
     }
 
-    public AgeCategory getAgeCategory() {
-        return ageCategory;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setAgeCategory(AgeCategory ageCategory) {
-        this.ageCategory = ageCategory;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 }

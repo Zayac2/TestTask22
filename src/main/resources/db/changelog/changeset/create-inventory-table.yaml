@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: create-member
+      id: create-inventory
       author: Ignat Zayac
       changes:
         - createTable:
-            tableName: member
+            tableName: inventory
             columns:
               - column:
                   name: id
@@ -17,14 +17,9 @@ databaseChangeLog:
                   name: team_id
                   type: bigint
                   constraints:
-                    foreignKeyName: team_member_fk
+                    foreignKeyName: team_inventory_fk
                     referencedTableName: team
                     referencedColumnNames: id
-                    nullable: false
-              - column:
-                  name: surname
-                  type: varchar(50)
-                  constraints:
                     nullable: false
               - column:
                   name: name
@@ -32,22 +27,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: patronymic
-                  type: varchar(50)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: role
-                  type: varchar(50)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: birthday
-                  type: date
-                  constraints:
-                    nullable: false
-              - column:
-                  name: ageCategory
-                  type: varchar(50)
+                  name: amount
+                  type: bigint
                   constraints:
                     nullable: false

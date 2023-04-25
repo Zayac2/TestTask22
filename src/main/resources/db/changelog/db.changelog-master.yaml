@@ -3,3 +3,9 @@ databaseChangeLog:
       file: db/changelog/changeset/create-team-table.yaml
   - include:
       file: db/changelog/changeset/create-member-table.yaml
+  - include:
+      file: db/changelog/changeset/create-competition-table.yaml
+  - include:
+      file: db/changelog/changeset/create-inventory-table.yaml
+  - include:
+      file: db/changelog/changeset/create-employee-table.yaml

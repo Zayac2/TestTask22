@@ -7,6 +7,7 @@ public class TeamRequest {
     private String teamName;
     private String sportType;
     private Date dateFound;
+    private String address;
 
     public String getTeamName() {
         return teamName;
@@ -22,6 +23,14 @@ public class TeamRequest {
 
     public void setSportType(String sportType) {
         this.sportType = sportType;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Date getDateFound() {

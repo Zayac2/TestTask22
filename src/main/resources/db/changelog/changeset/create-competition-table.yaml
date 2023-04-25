@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: create-team
+      id: create-competition
       author: Ignat Zayac
       changes:
         - createTable:
-            tableName: team
+            tableName: competition
             columns:
               - column:
                   name: id
@@ -14,35 +14,27 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: competition_id
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: sportType
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: numberOfTeams
                   type: bigint
                   constraints:
-                    foreignKeyName: competition_team_fk
-                    referencedTableName: competition
-                    referencedColumnNames: id
-              - column:
-                  name: team_name
-                  type: varchar(50)
-                  constraints:
                     nullable: false
               - column:
-                  name: sport_type
-                  type: varchar(50)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: date_found
+                  name: start
                   type: date
                   constraints:
                     nullable: false
               - column:
-                  name: address
-                  type: varchar(50)
+                  name: end
+                  type: date
                   constraints:
                     nullable: false
-              - column:
-                  name: total_members
-                  type: bigint
-                  constraints:
-                    nullable: false
-                    defaultValue: 0
