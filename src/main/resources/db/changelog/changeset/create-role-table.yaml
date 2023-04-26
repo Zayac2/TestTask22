@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-role
+      author: Ignat Zayac
+      changes:
+        - createTable:
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: roles
+                  type: varchar(50)
+                  constraints:
+                    nullable: false

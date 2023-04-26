@@ -9,3 +9,9 @@ databaseChangeLog:
       file: db/changelog/changeset/create-inventory-table.yaml
   - include:
       file: db/changelog/changeset/create-employee-table.yaml
+  - include:
+      file: db/changelog/changeset/create-user-table.yaml
+  - include:
+      file: db/changelog/changeset/create-role-table.yaml
+  - include:
+      file: db/changelog/changeset/create-user_role-table.yaml

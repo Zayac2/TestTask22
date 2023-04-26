@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
+@RequestMapping("/api/base")
 public class TeamsController {
     private final TeamsService teamsService;
 
@@ -38,7 +40,7 @@ public class TeamsController {
         return teamsService.findTeamsForPeriod(date1, date2);
     }
 
-    @GetMapping("members/total")
+    @GetMapping("/members/total")
     public Long countAllMembers() {
         return teamsService.countMembers();
     }
