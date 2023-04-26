@@ -13,10 +13,14 @@ public class Role {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "roles", nullable = false)
     private ERole roles;
 
     public Role() {}
+
+    public Role(ERole roles) {
+        this.roles = roles;
+    }
 
     public Long getId() {
         return id;

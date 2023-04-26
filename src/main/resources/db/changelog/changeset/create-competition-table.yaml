@@ -19,12 +19,12 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: sportType
+                  name: sport_type
                   type: varchar(50)
                   constraints:
                     nullable: false
               - column:
-                  name: numberOfTeams
+                  name: number_of_teams
                   type: bigint
                   constraints:
                     nullable: false

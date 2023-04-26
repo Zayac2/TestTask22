@@ -33,7 +33,8 @@ public class Member {
     @Temporal(TemporalType.DATE)
     private Date birthday;
 
-    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "age_category", nullable = false)
     private AgeCategory ageCategory;
 
     public Member() {}

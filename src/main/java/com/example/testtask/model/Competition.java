@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Competitions")
+@Table(name = "competition")
 public class Competition {
 
     @Id
@@ -14,10 +14,10 @@ public class Competition {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column(name = "sport_type", nullable = false)
     private String sportType;
 
-    @Column(nullable = false)
+    @Column(name = "number_of_teams", nullable = false)
     private Long numberOfTeams;
 
     @Column(nullable = false)
