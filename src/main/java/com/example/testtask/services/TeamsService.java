@@ -3,6 +3,7 @@ package com.example.testtask.services;
 import com.example.testtask.dto.*;
 import com.example.testtask.model.*;
 import com.example.testtask.repositories.*;
+import liquibase.pro.packaged.T;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -240,5 +241,22 @@ public class TeamsService {
 
     public void deleteEmployee(Long id) {
         employeeRepository.deleteById(id);
+    }
+
+    private int[] bubbleSort(int[] arr) {
+        boolean change = true;
+        while (change) {
+            change = false;
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] > arr[i + 1]) {
+                    int temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                    change = true
+                }
+            }
+        }
+
+        return arr;
     }
 }
