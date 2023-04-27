@@ -252,7 +252,7 @@ public class TeamsService {
                     int temp = arr[i];
                     arr[i] = arr[i + 1];
                     arr[i + 1] = temp;
-                    change = true
+                    change = true;
                 }
             }
         }
