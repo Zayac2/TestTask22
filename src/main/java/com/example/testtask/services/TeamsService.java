@@ -3,7 +3,6 @@ package com.example.testtask.services;
 import com.example.testtask.dto.*;
 import com.example.testtask.model.*;
 import com.example.testtask.repositories.*;
-import liquibase.pro.packaged.T;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -167,17 +166,17 @@ public class TeamsService {
                 .toLocalDate()).getYears();
 
         if (age < 3) {
-            throw new RuntimeException();
-        } else if (age >= 3 && age < 9) {
+            throw new RuntimeException("Member cannot be younger than 3 years old.");
+        } else if (age < 9) {
             member.setAgeCategory(CHILDREN);
-        } else if (age >= 9 && age < 19) {
+        } else if (age < 19) {
             member.setAgeCategory(TEENAGERS);
-        } else if (age >= 19 && age < 22) {
+        } else if (age < 22) {
             member.setAgeCategory(YOUTH);
-        } else if (age >= 22 && age < 41) {
+        } else if (age < 41) {
             member.setAgeCategory(ADULTS);
         } else {
-            throw new RuntimeException();
+            throw new RuntimeException("Member cannot be older than 40 years old.");
         }
     }
 
